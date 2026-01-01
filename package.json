@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "npx wrangler pages deploy ./dist/cozy-snippet-clothes/browser --project-name=behdaung-store",
+    "deploy": "npx wrangler pages deploy ./dist/cozy-snippet-clothes/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
