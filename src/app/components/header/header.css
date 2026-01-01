@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  width: 100%;
+  position: sticky; /* Make the component host sticky */
+  top: 0;
+  z-index: 100;
+}
+
+header.sticky-header {
+  /* Remove position sticky from here since it's now on the host */
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+
+/* Ensure the search overlay is even higher than the sticky header */
+.fixed.inset-0.z-\[60\] {
+  z-index: 110 !important;
+}
+
+/* Glass Blur Effect */
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Original animations preserved */
+@keyframes slide-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
