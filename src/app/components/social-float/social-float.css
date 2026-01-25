@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+.backdrop-blur-2xl {
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+}
+
+/* WHITE PULSE GLOW (Premium focus) */
+.glow-white {
+  animation: white-pulse 3s infinite;
+}
+
+@keyframes white-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+}
+
+/* BRAND COLORS */
+.tg-color { color: #0088cc; }
+.ig-color {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* TIKTOK GLITCH ICON (The colorful look you like) */
+.tt-color {
+  color: #000;
+  filter: drop-shadow(2px 0px 0px #FD3E3E) drop-shadow(-2px 0px 0px #4DE8F4);
+}
+
+.fb-color { color: #1877f2; }
+
+/* Animations */
+.animate-nudge { animation: nudge 2s infinite; }
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-4px); }
+}
+
+.group:hover span {
+  transform: translateX(-10px);
+}

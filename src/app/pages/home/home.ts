@@ -6,6 +6,7 @@ import {ProductGrid} from '../../components/product-grid/product-grid';
 import {FeaturedCollections} from '../../components/featured-collections/featured-collections';
 import {BrandPhilosophy} from '../../components/brand-philosophy/brand-philosophy';
 import {InstagramFeed} from '../../components/instagram-feed/instagram-feed';
+import {GoogleAuth} from '../../components/google-auth/google-auth';
 
 @Component({
   selector: 'app-home',

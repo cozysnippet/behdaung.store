@@ -1,21 +1,86 @@
+/*:host {*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  position: sticky; !* Make the component host sticky *!*/
+/*  top: 0;*/
+/*  z-index: 100;*/
+/*}*/
+
+/*header.sticky-header {*/
+/*  !* Remove position sticky from here since it's now on the host *!*/
+/*  width: 100%;*/
+/*  background-color: white;*/
+/*  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);*/
+/*}*/
+
+/*!* Ensure the search overlay is even higher than the sticky header *!*/
+/*.fixed.inset-0.z-\[60\] {*/
+/*  z-index: 110 !important;*/
+/*}*/
+
+/*!* Glass Blur Effect *!*/
+/*.backdrop-blur-md {*/
+/*  -webkit-backdrop-filter: blur(12px);*/
+/*  backdrop-filter: blur(12px);*/
+/*}*/
+
+/*@keyframes slide-down {*/
+/*  from { transform: translateY(-30px); opacity: 0; }*/
+/*  to { transform: translateY(0); opacity: 1; }*/
+/*}*/
+
+/*.animate-slide-down {*/
+/*  animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);*/
+/*}*/
+
+/*!* Original animations preserved *!*/
+/*@keyframes slide-in {*/
+/*  from { transform: translateX(-100%); }*/
+/*  to { transform: translateX(0); }*/
+/*}*/
+
+/*@keyframes fade-in {*/
+/*  from { opacity: 0; }*/
+/*  to { opacity: 1; }*/
+/*}*/
+
+/*.animate-slide-in {*/
+/*  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);*/
+/*}*/
+
+/*.animate-fade-in {*/
+/*  animation: fade-in 0.3s ease-out;*/
+/*}*/
+
+
+/*!* Add this to your header.css to ensure mobile menu is correct *!*/
+
+/*!* Mobile Menu Z-Index *!*/
+/*.fixed.z-\[100\].lg\:hidden {*/
+/*  z-index: 100 !important;*/
+/*}*/
+
+/*!* Ensure Auth Drawer is HIGHER than mobile menu *!*/
+/*!* In auth-drawer.html, you used z-[100] and z-[101].*/
+/*   Let's bump them up slightly in your global styles or verify auth-drawer.html uses z-[110] *!*/
+
+
 :host {
   display: block;
   width: 100%;
-  position: sticky; /* Make the component host sticky */
+  position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 40; /* Header stays above page content */
 }
 
-header.sticky-header {
-  /* Remove position sticky from here since it's now on the host */
-  width: 100%;
-  background-color: white;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+/* Ensure the Search Overlay is above the header but below the mobile menu */
+.fixed.inset-0.z-\[110\] {
+  z-index: 60 !important;
 }
 
-/* Ensure the search overlay is even higher than the sticky header */
-.fixed.inset-0.z-\[60\] {
-  z-index: 110 !important;
+/* Ensure the Mobile Menu is above the header and search */
+.fixed.z-\[100\] {
+  z-index: 100 !important;
 }
 
 /* Glass Blur Effect */
@@ -24,30 +89,21 @@ header.sticky-header {
   backdrop-filter: blur(12px);
 }
 
+/* Animations */
 @keyframes slide-down {
   from { transform: translateY(-30px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+.animate-slide-down { animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 
-.animate-slide-down {
-  animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Original animations preserved */
 @keyframes slide-in {
   from { transform: translateX(-100%); }
   to { transform: translateX(0); }
 }
+.animate-slide-in { animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
-.animate-slide-in {
-  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
+.animate-fade-in { animation: fade-in 0.3s ease-out; }

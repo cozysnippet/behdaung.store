@@ -55,6 +55,10 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "host": "localhost.com",
+            "allowedHosts": ["localhost.com", "localhost"]
+          },
           "configurations": {
             "production": {
               "buildTarget": "cozy-snippet-clothes:build:production"

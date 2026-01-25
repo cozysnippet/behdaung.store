@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.telegram-btn {
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Ensure the icon color transition is smooth */
+.telegram-icon {
+  transition: color 0.3s ease;
+}
+
+/* Luxury text softening to match your drawer's footer */
+span {
+  letter-spacing: 0.3em;
+}

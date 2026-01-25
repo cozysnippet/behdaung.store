@@ -1,0 +1,34 @@
+<div class="fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex items-center transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+     [style.transform]="isExpanded() ? 'translateX(0)' : 'translateX(calc(100% - 40px))'">
+
+  @if (!isExpanded()) {
+    <button (click)="toggleMenu()"
+            class="w-10 h-16 bg-black text-white flex items-center justify-center rounded-l-2xl shadow-xl border border-white/20 glow-white">
+      <i class="fas fa-chevron-left animate-nudge"></i>
+    </button>
+  }
+
+  <div class="flex flex-col items-center gap-4">
+
+    @if (isExpanded()) {
+      <button (click)="toggleMenu()"
+              class="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform border border-white/20 glow-white">
+        <i class="fas fa-times"></i>
+      </button>
+    }
+
+    <div class="bg-white/30 backdrop-blur-2xl border-l border-y border-white/40 py-8 px-4 flex flex-col gap-6 shadow-2xl rounded-l-[3rem]">
+      @for (social of socials; track social.name) {
+        <a [href]="social.url" target="_blank"
+           class="group relative flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-md transition-all duration-500 hover:scale-110">
+
+          <i [class]="social.icon + ' text-xl ' + social.colorClass"></i>
+
+          <span class="absolute right-16 px-3 py-1 bg-black text-white text-[8px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-all pointer-events-none">
+            {{ social.name }}
+          </span>
+        </a>
+      }
+    </div>
+  </div>
+</div>
