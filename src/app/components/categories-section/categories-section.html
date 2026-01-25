@@ -1,5 +1,4 @@
 <section class="w-full bg-white py-20">
-
   <div class="max-w-[1600px] mx-auto px-8 md:px-16">
 
     <div class="mb-16 max-w-2xl">
@@ -11,15 +10,28 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1000"
-          alt="New Arrivals"
-          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
+      <div class="group relative aspect-[3/4] overflow-hidden bg-black cursor-pointer">
+        <video
+          #promoVideo
+          autoplay
+          muted
+          loop
+          playsinline
+          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+        >
+          <source src="https://raw.githubusercontent.com/cozysnippet/media/master/media/channy_white_tshirt_promotion.mp4" type="video/mp4">
+        </video>
+
+        <button
+          (click)="$event.stopPropagation(); promoVideo.muted = !promoVideo.muted"
+          class="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/20 text-white"
+        >
+          <i class="fas text-xs" [class.fa-volume-up]="!promoVideo.muted" [class.fa-volume-mute]="promoVideo.muted"></i>
+        </button>
+
         <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/20"></div>
         <div class="absolute bottom-8 left-8">
-          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body">New Arrivals</h3>
+          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">New Arrivals</h3>
         </div>
       </div>
 
@@ -31,7 +43,7 @@
         />
         <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/20"></div>
         <div class="absolute bottom-8 left-8">
-          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body">The Casual Edit</h3>
+          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">The Casual Edit</h3>
         </div>
       </div>
 
@@ -43,7 +55,7 @@
         />
         <div class="absolute inset-0 bg-black/10 transition-opacity group-hover:bg-black/20"></div>
         <div class="absolute bottom-8 left-8">
-          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body">Best-Sellers</h3>
+          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">Best-Sellers</h3>
         </div>
       </div>
 
