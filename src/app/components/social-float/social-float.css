@@ -2,19 +2,40 @@
   display: block;
 }
 
-/* Frosty Glass Effect */
+/* PREMIUM SPRING TRANSITION */
+.ease-spring {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+}
+
+/* Icon Animation States */
+.opacity-0 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.translate-x-4 {
+  transform: translateX(16px);
+}
+
+/* Glassmorphism Blur */
 .backdrop-blur-2xl {
   -webkit-backdrop-filter: blur(40px);
   backdrop-filter: blur(40px);
 }
 
-/* TikTok Glitch - Restored to your favorite colorful look */
+/* TikTok Glitch Effect */
 .tt-color {
   color: #000;
   filter: drop-shadow(1.5px 0px 0px #FD3E3E) drop-shadow(-1.5px 0px 0px #4DE8F4);
 }
 
-/* Official Colors */
+/* Official Brand Colors */
 .tg-color { color: #0088cc; }
 .ig-color {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
@@ -23,12 +44,14 @@
 }
 .fb-color { color: #1877f2; }
 
-/* Arrow Nudge */
+/* Arrow Nudge Animation */
 .animate-nudge { animation: nudge 2s infinite; }
 @keyframes nudge {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(-1.5px); }
 }
 
-/* Tooltip Labels */
-.group:hover span { transform: translateX(-8px); }
+/* Hover Tooltips */
+.group:hover span {
+  transform: translateX(-8px);
+}
