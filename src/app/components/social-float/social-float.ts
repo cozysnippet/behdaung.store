@@ -15,7 +15,7 @@ export class SocialFloat {
     { name: 'Telegram', icon: 'fab fa-telegram-plane', url: 'https://t.me/behdaung', colorClass: 'tg-color' },
     { name: 'Instagram', icon: 'fab fa-instagram', url: 'https://www.instagram.com/behdaung.fashion/', colorClass: 'ig-color' },
     { name: 'TikTok', icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@behdaung', colorClass: 'tt-color' },
-    { name: 'Facebook', icon: 'fab fa-facebook-f', url: 'https://www.facebook.com/behdaung', colorClass: 'fb-color' }
+    { name: 'Facebook', icon: 'fab fa-facebook-f', url: 'https://www.facebook.com/behdaung.store', colorClass: 'fb-color' }
   ];
 
   toggleMenu() {
