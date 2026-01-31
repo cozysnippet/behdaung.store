@@ -5,10 +5,11 @@ import {HeroSectionTwo} from './components/hero-section-two/hero-section-two';
 import {Footer} from './components/footer/footer';
 import {Header} from './components/header/header';
 import {SocialFloat} from './components/social-float/social-float';
+import {QuickNav} from './components/quick-nav/quick-nav';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Footer, Header, SocialFloat],
+  imports: [RouterOutlet, Footer, Header, SocialFloat, QuickNav],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
