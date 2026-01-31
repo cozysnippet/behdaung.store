@@ -6,7 +6,6 @@
   <div class="absolute inset-0 bg-black/20 backdrop-blur-md animate-fade-in" (click)="toggleSearch()"></div>
   <div class="relative bg-white w-full animate-slide-down shadow-2xl">
     <div class="max-w-[1600px] mx-auto px-8 py-10">
-
       <div class="flex items-center border-b border-gray-200 pb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -18,7 +17,6 @@
           </svg>
         </button>
       </div>
-
       <div class="mt-8 pb-10">
         <div class="flex justify-between items-center mb-6">
           <span class="text-[11px] text-gray-400 uppercase tracking-widest font-medium">13 results</span>
@@ -34,14 +32,12 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<header class="sticky-header w-full bg-white border-b border-gray-100 sticky top-0">
+<header class="sticky-header w-full bg-white border-b border-gray-100 sticky top-0 z-[100]">
   <nav class="max-w-[1600px] mx-auto flex items-center justify-between px-8 py-4">
-
     <button (click)="toggleMobileMenu()" class="lg:hidden p-2 -ml-2">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 9h16.5m-16.5 6.75h16.5" />
@@ -49,21 +45,20 @@
     </button>
 
     <div class="flex-1 flex lg:block justify-center">
-      <h1 class="text-3xl font-khmer-body font-bold leading-relaxed text-black cursor-pointer">បេះដូង.</h1>
+      <h1 routerLink="/" (click)="isMobileMenuOpen = false" class="text-3xl font-khmer-body font-bold leading-relaxed text-black cursor-pointer">បេះដូង.</h1>
     </div>
 
     <ul class="hidden lg:flex space-x-10 text-[13px] font-medium uppercase tracking-widest text-gray-800">
-      <li class="cursor-pointer hover:text-black transition">Shop</li>
-      <li class="cursor-pointer hover:text-black transition">New Arrivals</li>
-      <li class="cursor-pointer hover:text-black transition">Sales</li>
-      <li class="cursor-pointer hover:text-black transition">Journal</li>
+      <li routerLink="/shop" routerLinkActive="text-black font-bold" class="cursor-pointer hover:text-black transition">Shop</li>
+      <li routerLink="/new-arrivals" routerLinkActive="text-black font-bold" class="cursor-pointer hover:text-black transition">New Arrivals</li>
+      <li routerLink="/sales" routerLinkActive="text-black font-bold" class="cursor-pointer hover:text-black transition">Sales</li>
+      <li routerLink="/journal" routerLinkActive="text-black font-bold" class="cursor-pointer hover:text-black transition">Journal</li>
     </ul>
 
     <div class="flex-1 flex items-center justify-end space-x-6 text-gray-700">
       <button (click)="toggleSearch()" class="hover:text-black">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
       </button>
-
       <span class="hidden md:block text-[13px] font-medium cursor-pointer border-r border-gray-200 pr-4">Stores</span>
 
       <div class="hidden md:block">
@@ -75,7 +70,7 @@
             <img [src]="user.photo_url" class="w-8 h-8 rounded-full border border-gray-200 object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
             <div class="absolute right-0 top-full pt-4 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity z-50">
               <div class="bg-white border border-gray-100 shadow-xl min-w-[140px] py-2">
-                <button (click)="auth.logout()" class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-red-50 hover:text-red-600">Sign Out</button>
+                <button (click)="handleLogout()" class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-red-50 hover:text-red-600">Sign Out</button>
               </div>
             </div>
           </div>
@@ -93,9 +88,8 @@
     </div>
   </nav>
 
-  <div *ngIf="isMobileMenuOpen" class="fixed inset-0 z-[100] lg:hidden">
+  <div *ngIf="isMobileMenuOpen" class="fixed inset-0 z-[120] lg:hidden">
     <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" (click)="toggleMobileMenu()"></div>
-
     <div class="absolute inset-y-0 left-0 w-full max-w-[85%] bg-white shadow-2xl flex flex-col animate-slide-in">
 
       <div class="px-6 py-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
@@ -115,16 +109,15 @@
               <span class="text-gray-400">{{ activeMobileTab === 'shop' ? '—' : '+' }}</span>
             </div>
             <ul *ngIf="activeMobileTab === 'shop'" class="mt-4 ml-4 space-y-4 text-gray-500 text-xs border-l border-gray-200 pl-4 animate-fade-in">
-              <li class="hover:text-black">Bags</li>
-              <li class="hover:text-black">Clothing</li>
-              <li class="hover:text-black">Accessories</li>
-              <li class="hover:text-black font-medium text-black">Shop All</li>
+              <li routerLink="/shop" (click)="toggleMobileMenu()" class="hover:text-black cursor-pointer">Shop All</li>
+              <li routerLink="/shop" [queryParams]="{cat: 'bags'}" (click)="toggleMobileMenu()" class="hover:text-black cursor-pointer">Bags</li>
+              <li routerLink="/shop" [queryParams]="{cat: 'clothing'}" (click)="toggleMobileMenu()" class="hover:text-black cursor-pointer">Clothing</li>
             </ul>
           </li>
-          <li class="text-sm font-bold uppercase tracking-widest flex justify-between">New Arrivals <span class="text-gray-400">+</span></li>
-          <li class="text-sm font-bold uppercase tracking-widest flex justify-between">Sales <span class="text-gray-400">+</span></li>
-          <li class="text-sm font-bold uppercase tracking-widest flex justify-between border-b border-gray-100 pb-6">Journal <span class="text-gray-400">+</span></li>
-          <li class="text-sm text-gray-500 pt-2 uppercase tracking-widest">Stores</li>
+          <li routerLink="/new-arrivals" (click)="toggleMobileMenu()" class="text-sm font-bold uppercase tracking-widest flex justify-between cursor-pointer">New Arrivals <span class="text-gray-400">→</span></li>
+          <li routerLink="/sales" (click)="toggleMobileMenu()" class="text-sm font-bold uppercase tracking-widest flex justify-between cursor-pointer">Sales <span class="text-gray-400">→</span></li>
+          <li routerLink="/journal" (click)="toggleMobileMenu()" class="text-sm font-bold uppercase tracking-widest flex justify-between border-b border-gray-100 pb-6 cursor-pointer">Journal <span class="text-gray-400">→</span></li>
+          <li class="text-sm text-gray-500 pt-2 uppercase tracking-widest cursor-pointer">Stores</li>
         </ul>
       </div>
 
@@ -133,14 +126,9 @@
           <div class="flex items-center gap-4">
             <img [src]="user.photo_url" class="w-10 h-10 rounded-full border border-white shadow-sm object-cover">
             <div class="flex-1">
-              <p class="text-xs font-bold uppercase tracking-widest text-black">{{ user.first_name }}</p>
-              <p class="text-[10px] text-gray-400 uppercase tracking-wider">Verified ID</p>
+              <p class="text-xs font-bold uppercase tracking-widest text-black leading-none">{{ user.first_name }}</p>
+              <button (click)="handleLogout()" class="text-[10px] text-red-500 uppercase font-bold tracking-tighter mt-1">Sign Out</button>
             </div>
-            <button (click)="auth.logout()" class="text-red-500 hover:bg-red-50 p-2 rounded-full transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
-              </svg>
-            </button>
           </div>
         } @else {
           <button (click)="openAuthFromMobile()" class="w-full bg-[#1a1a1a] text-white py-4 uppercase tracking-[0.3em] text-[10px] hover:bg-black transition-colors">
@@ -148,7 +136,6 @@
           </button>
         }
       </div>
-
     </div>
   </div>
 </header>

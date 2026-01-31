@@ -1,1 +1,62 @@
-<p>new-arrivals works!</p>
+<div class="min-h-screen bg-white">
+  <div class="max-w-[1600px] mx-auto px-4 md:px-8 pt-10 md:pt-16 pb-6 border-b border-gray-50">
+    <div class="text-center md:text-left">
+      <h1 class="text-2xl md:text-4xl font-light uppercase tracking-[0.3em] font-khmer-body text-gray-900 mb-2">New Arrivals</h1>
+      <p class="text-[9px] md:text-xs text-gray-400 uppercase tracking-widest">Seasonal Collection — 2026</p>
+    </div>
+  </div>
+
+  <div class="sticky top-[72px] z-30 bg-white/95 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-[1600px] mx-auto px-6 py-4 flex justify-between items-center text-[10px] uppercase tracking-widest font-bold">
+      <div class="flex gap-6">
+        <button class="flex items-center gap-2 hover:text-gray-400 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="1.5" d="M3 4.5h18m-18 7.5h18m-18 7.5h18"/></svg>
+          Filter
+        </button>
+        <button class="hidden md:block hover:text-gray-400 transition-colors">Sort By</button>
+      </div>
+      <span class="text-gray-300 font-light">{{ products.length }} Styles</span>
+      <button class="md:hidden hover:text-gray-400 transition-colors font-bold">Sort</button>
+    </div>
+  </div>
+
+  <div class="max-w-[1600px] mx-auto px-3 md:px-8 py-10">
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 md:gap-x-8 gap-y-12">
+
+      @for (product of products; track product.id) {
+        <div class="group cursor-pointer flex flex-col" [routerLink]="['/product', product.id]">
+
+          <div class="relative aspect-[3/4] bg-gray-50 overflow-hidden mb-4 md:mb-6">
+            <img [src]="product.imageUrl"
+                 [alt]="product.name"
+                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                 (error)="handleImageError($event)">
+
+            @if (product.tag) {
+              <div class="absolute top-2 left-2 md:top-4 md:left-4 bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1.5 shadow-sm">
+                <span class="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold text-black">{{ product.tag }}</span>
+              </div>
+            }
+
+            <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity hidden lg:flex items-end p-4">
+              <button class="w-full bg-white/90 backdrop-blur-md py-4 text-[10px] uppercase tracking-widest font-bold hover:bg-black hover:text-white transition-all">
+                Quick Add
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-1.5 px-1">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-1">
+              <h3 class="text-[10px] md:text-[12px] font-medium uppercase tracking-widest text-gray-900 leading-tight truncate">
+                {{ product.name }}
+              </h3>
+              <p class="text-[11px] md:text-[12px] font-light text-gray-900">{{ product.price | currency }}</p>
+            </div>
+            <p class="text-[8px] md:text-[10px] text-gray-400 uppercase tracking-widest">{{ product.category }}</p>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

@@ -10,44 +10,37 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <div class="group relative aspect-[3/4] overflow-hidden bg-gray-50 cursor-pointer">
-        <video
-          #promoVideo
-          muted
-          loop
-          playsinline
-          preload="auto"
-          poster="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1000"
+      <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
+        <img
+          src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1000"
+          alt="New Arrivals"
           class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        >
-          <source src="https://res.cloudinary.com/djb4x37fa/video/upload/v1769354869/channy_white_tshirt_promotion_rpv9b7.mp4" type="video/mp4">
-        </video>
-
-        <button
-          (click)="$event.stopPropagation(); promoVideo.muted = !promoVideo.muted"
-          class="absolute top-4 right-4 z-30 w-9 h-9 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:bg-black/50"
-        >
-          <i class="fas text-[11px]" [class.fa-volume-up]="!promoVideo.muted" [class.fa-volume-mute]="promoVideo.muted"></i>
-        </button>
-
-        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
-
+        />
+        <div class="absolute inset-0 bg-black/5 transition-opacity group-hover:bg-black/20"></div>
         <div class="absolute bottom-8 left-8">
           <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">New Arrivals</h3>
         </div>
       </div>
 
       <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000" alt="Casual" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <div class="absolute inset-0 bg-black/5"></div>
+        <img
+          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000"
+          alt="The Casual Edit"
+          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black/5 transition-opacity group-hover:bg-black/20"></div>
         <div class="absolute bottom-8 left-8">
           <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">The Casual Edit</h3>
         </div>
       </div>
 
       <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
-        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000" alt="Best Sellers" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <div class="absolute inset-0 bg-black/5"></div>
+        <img
+          src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000"
+          alt="Best Sellers"
+          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black/5 transition-opacity group-hover:bg-black/20"></div>
         <div class="absolute bottom-8 left-8">
           <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">Best-Sellers</h3>
         </div>

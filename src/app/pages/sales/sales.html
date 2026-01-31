@@ -1,1 +1,48 @@
-<p>sales works!</p>
+<div class="min-h-screen bg-white">
+  <div class="max-w-[1600px] mx-auto px-4 pt-10 pb-6 border-b border-gray-50 text-center">
+    <h1 class="text-2xl font-light uppercase tracking-[0.3em] font-khmer-body text-gray-900">Archive Sale</h1>
+    <p class="text-[9px] text-gray-400 uppercase tracking-[0.2em] mt-2">Limited Inventory Remaining</p>
+  </div>
+
+  <div class="sticky top-[72px] z-30 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-[1600px] mx-auto px-6 py-3 flex justify-between items-center text-[10px] uppercase tracking-widest font-bold">
+      <button class="flex items-center gap-2">Filter</button>
+      <button class="flex items-center gap-2">Sort</button>
+    </div>
+  </div>
+
+  <div class="max-w-[1600px] mx-auto px-3 md:px-8 py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-10 md:gap-x-8 md:gap-y-16">
+
+      @for (item of saleProducts; track item.id) {
+        <div class="group cursor-pointer flex flex-col" [routerLink]="['/product', item.id]">
+
+          <div class="relative aspect-[3/4] bg-[#F9F9F9] overflow-hidden mb-4">
+            <img [src]="item.imageUrl"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 (error)="handleImageError($event)">
+
+            <div class="absolute top-0 left-0 bg-black text-white px-2 py-1">
+              <span class="text-[8px] uppercase tracking-tighter font-bold">-{{ item.discountPercentage }}%</span>
+            </div>
+
+            @if (item.stockLevel && item.stockLevel < 5) {
+              <div class="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm py-1.5 text-center border-t border-gray-100">
+                <span class="text-[8px] text-red-600 uppercase tracking-[0.2em] font-bold">Only {{ item.stockLevel }} Left</span>
+              </div>
+            }
+          </div>
+
+          <div class="space-y-1 px-1">
+            <h3 class="text-[11px] font-medium uppercase tracking-wider text-gray-900 truncate">{{ item.name }}</h3>
+            <div class="flex items-center gap-2">
+              <span class="text-[12px] font-bold text-black">{{ item.discountPrice | currency }}</span>
+              <span class="text-[10px] text-gray-300 line-through font-light">{{ item.originalPrice | currency }}</span>
+            </div>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+/* Hide scrollbar for the image carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ensure images don't overflow their containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth Accordion Arrow */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Ensure sticky works correctly in flex/grid */
+.lg\:sticky {
+  align-self: flex-start;
+}

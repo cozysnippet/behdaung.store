@@ -1,0 +1,18 @@
+/* Animation for the mobile filter drawer */
+div[fixed] {
+  transition: opacity 0.3s ease;
+}
+
+.absolute.bottom-0 {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Hide scrollbars for a cleaner look */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
