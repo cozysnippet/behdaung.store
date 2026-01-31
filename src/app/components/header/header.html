@@ -35,7 +35,7 @@
     </ul>
 
     <div class="flex-1 flex items-center justify-end space-x-6 text-gray-700">
-      <button (click)="toggleSearch()" class="hover:text-black">
+      <button (click)="toggleSearch()" class="hover:text-black transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
       </button>
 
@@ -43,7 +43,7 @@
         @if (auth.currentUser(); as user) {
           <div class="relative group flex items-center gap-3 cursor-pointer">
             <p class="text-[9px] font-bold uppercase tracking-widest text-black">{{ user.first_name }}</p>
-            <img [src]="user.photo_url" class="w-8 h-8 rounded-full border border-gray-200 object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+            <img [src]="user.photo_url" class="w-8 h-8 rounded-full border border-gray-100 object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
             <div class="absolute right-0 top-full pt-4 opacity-0 group-hover:opacity-100 transition-opacity">
               <div class="bg-white border border-gray-100 shadow-xl min-w-[140px] py-2">
                 <button (click)="auth.logout()" class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-red-50 hover:text-red-600">Sign Out</button>
@@ -51,15 +51,17 @@
             </div>
           </div>
         } @else {
-          <button (click)="authDrawer.open()" class="hover:text-black">
+          <button (click)="authDrawer.open()" class="hover:text-black transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"></path></svg>
           </button>
         }
       </div>
 
-      <div class="relative cursor-pointer hover:text-black">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.5" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg>
-        <span class="absolute -top-1.5 -right-2 text-[10px] bg-black text-white rounded-full h-4 w-4 flex items-center justify-center">2</span>
+      <div (click)="toggleCart()" class="relative cursor-pointer hover:text-black">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="1.5" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+        </svg>
+        <span class="absolute -top-1.5 -right-2 text-[10px] bg-black text-white rounded-full h-4 w-4 flex items-center justify-center font-bold">5</span>
       </div>
     </div>
   </nav>
@@ -78,3 +80,8 @@
 </app-mobile-nav>
 
 <app-auth-drawer #authDrawer></app-auth-drawer>
+
+<app-cart-drawer
+  [isOpen]="isCartOpen"
+  (onClose)="toggleCart()">
+</app-cart-drawer>
