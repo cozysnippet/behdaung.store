@@ -1,17 +1,19 @@
-import { Component, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthDrawer } from '../auth-drawer/auth-drawer';
-import { Auth } from '../../services/auth';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Auth } from '../../services/auth';
+import { AuthDrawer } from '../auth-drawer/auth-drawer';
+import {MobileNav} from '../mobile-nav/mobile-nav';
+import {SearchOverlay} from '../search-overlay/search-overlay';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, AuthDrawer, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, AuthDrawer, SearchOverlay, MobileNav],
   templateUrl: './header.html',
-  styleUrl: './header.css',
+  styleUrl: './header.css'
 })
-export class Header implements OnDestroy {
+export class Header {
   @ViewChild('authDrawer') authDrawer!: AuthDrawer;
 
   isMobileMenuOpen = false;
@@ -20,11 +22,6 @@ export class Header implements OnDestroy {
 
   constructor(public auth: Auth) {}
 
-  // Lifecycle hook to clean up scroll locking
-  ngOnDestroy() {
-    document.body.style.overflow = 'auto';
-  }
-
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : 'auto';
@@ -32,22 +29,15 @@ export class Header implements OnDestroy {
 
   toggleSearch() {
     this.isSearchOpen = !this.isSearchOpen;
-    if(this.isSearchOpen) this.isMobileMenuOpen = false;
+    if (this.isSearchOpen) this.isMobileMenuOpen = false;
   }
 
   toggleAccordion(tab: string) {
     this.activeMobileTab = this.activeMobileTab === tab ? null : tab;
   }
 
-  // FIXED: Improved mobile login trigger
-  // FIXED: Logic to close mobile menu before opening login
   openAuthFromMobile() {
-    this.toggleMobileMenu(); // 1. Close the mobile menu
+    this.toggleMobileMenu();
     this.authDrawer.open();
-  }
-
-  handleLogout() {
-    this.auth.logout();
-    if(this.isMobileMenuOpen) this.toggleMobileMenu();
   }
 }

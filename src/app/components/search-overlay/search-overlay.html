@@ -1,0 +1,61 @@
+<div class="fixed inset-0 z-[200] flex flex-col">
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm animate-fade-in" (click)="onClose.emit()"></div>
+
+  <div class="relative bg-white w-full animate-slide-down shadow-2xl max-h-[90vh] flex flex-col">
+
+    <div class="max-w-[1000px] mx-auto w-full px-4 md:px-8 pt-6 pb-4 md:pt-10 border-b border-gray-50">
+      <div class="flex items-center relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+
+        <input type="text"
+               [(ngModel)]="searchQuery"
+               (input)="performSearch()"
+               placeholder="Search 20+ items..."
+               class="flex-1 min-w-0 mx-3 md:mx-4 text-base md:text-xl font-light outline-none bg-transparent"
+               autoFocus>
+
+        <button (click)="onClose.emit()"
+                class="shrink-0 p-2 text-[10px] uppercase tracking-widest font-black text-black hover:bg-gray-100 rounded-lg transition-all">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto px-4 md:px-8 py-6 custom-scrollbar bg-white">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="flex justify-between items-center mb-6">
+          <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400">
+            {{ filteredProducts.length }} Results Found
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2">
+          @for (product of filteredProducts; track product.id) {
+            <div (click)="goToProduct(product.id)"
+                 class="flex items-center gap-4 group cursor-pointer p-2 -mx-2 hover:bg-gray-50 rounded-xl transition-all duration-300">
+              <div class="w-14 h-18 bg-[#F9F9F9] overflow-hidden shrink-0 rounded-md border border-gray-100">
+                <img [src]="product.imageUrl" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              </div>
+              <div class="flex-1 min-w-0">
+                <h4 class="text-[11px] font-bold uppercase tracking-tight text-gray-900 truncate">{{ product.name }}</h4>
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest">{{ product.category }}</p>
+                <p class="text-[11px] font-medium mt-0.5 text-gray-600">{{ product.price | currency }}</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-200 group-hover:text-black group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          }
+
+          @if (filteredProducts.length === 0) {
+            <div class="col-span-full py-20 text-center">
+              <p class="text-[11px] uppercase tracking-[0.3em] text-gray-300 font-light">No matches found for your search</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
