@@ -15,11 +15,23 @@
       <h1 routerLink="/" class="text-3xl font-khmer-body font-bold leading-relaxed text-black cursor-pointer">បេះដូង.</h1>
     </div>
 
-    <ul class="hidden lg:flex space-x-10 text-[13px] font-medium uppercase tracking-widest text-gray-800">
-      <li routerLink="/shop" routerLinkActive="text-black font-bold">Shop</li>
-      <li routerLink="/new-arrivals" routerLinkActive="text-black font-bold">New Arrivals</li>
-      <li routerLink="/sales" routerLinkActive="text-black font-bold">Sales</li>
-      <li routerLink="/journal" routerLinkActive="text-black font-bold">Journal</li>
+    <ul class="hidden lg:flex space-x-10 items-center">
+      <li routerLink="/shop" routerLinkActive="active-link" class="nav-item">
+        <span class="khmer-label">ទិញទំនិញ</span>
+        <span class="english-label">Shop</span>
+      </li>
+      <li routerLink="/new-arrivals" routerLinkActive="active-link" class="nav-item">
+        <span class="khmer-label">ថ្មីៗ</span>
+        <span class="english-label">New Arrivals</span>
+      </li>
+      <li routerLink="/sales" routerLinkActive="active-link" class="nav-item">
+        <span class="khmer-label">បញ្ចុះតម្លៃ</span>
+        <span class="english-label">Sales</span>
+      </li>
+      <li routerLink="/journal" routerLinkActive="active-link" class="nav-item">
+        <span class="khmer-label">អត្ថបទ</span>
+        <span class="english-label">Journal</span>
+      </li>
     </ul>
 
     <div class="flex-1 flex items-center justify-end space-x-6 text-gray-700">
@@ -54,6 +66,7 @@
 </header>
 
 <app-search-overlay *ngIf="isSearchOpen" (onClose)="toggleSearch()"></app-search-overlay>
+
 <app-mobile-nav
   *ngIf="isMobileMenuOpen"
   [authUser]="auth.currentUser()"

@@ -1,70 +1,3 @@
-/*:host {*/
-/*  display: block;*/
-/*  width: 100%;*/
-/*  position: sticky; !* Make the component host sticky *!*/
-/*  top: 0;*/
-/*  z-index: 100;*/
-/*}*/
-
-/*header.sticky-header {*/
-/*  !* Remove position sticky from here since it's now on the host *!*/
-/*  width: 100%;*/
-/*  background-color: white;*/
-/*  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);*/
-/*}*/
-
-/*!* Ensure the search overlay is even higher than the sticky header *!*/
-/*.fixed.inset-0.z-\[60\] {*/
-/*  z-index: 110 !important;*/
-/*}*/
-
-/*!* Glass Blur Effect *!*/
-/*.backdrop-blur-md {*/
-/*  -webkit-backdrop-filter: blur(12px);*/
-/*  backdrop-filter: blur(12px);*/
-/*}*/
-
-/*@keyframes slide-down {*/
-/*  from { transform: translateY(-30px); opacity: 0; }*/
-/*  to { transform: translateY(0); opacity: 1; }*/
-/*}*/
-
-/*.animate-slide-down {*/
-/*  animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);*/
-/*}*/
-
-/*!* Original animations preserved *!*/
-/*@keyframes slide-in {*/
-/*  from { transform: translateX(-100%); }*/
-/*  to { transform: translateX(0); }*/
-/*}*/
-
-/*@keyframes fade-in {*/
-/*  from { opacity: 0; }*/
-/*  to { opacity: 1; }*/
-/*}*/
-
-/*.animate-slide-in {*/
-/*  animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);*/
-/*}*/
-
-/*.animate-fade-in {*/
-/*  animation: fade-in 0.3s ease-out;*/
-/*}*/
-
-
-/*!* Add this to your header.css to ensure mobile menu is correct *!*/
-
-/*!* Mobile Menu Z-Index *!*/
-/*.fixed.z-\[100\].lg\:hidden {*/
-/*  z-index: 100 !important;*/
-/*}*/
-
-/*!* Ensure Auth Drawer is HIGHER than mobile menu *!*/
-/*!* In auth-drawer.html, you used z-[100] and z-[101].*/
-/*   Let's bump them up slightly in your global styles or verify auth-drawer.html uses z-[110] *!*/
-
-
 :host {
   display: block;
   width: 100%;
@@ -73,34 +6,60 @@
   z-index: 40; /* Header stays above page content */
 }
 
-/* Ensure the Search Overlay is above the header but below the mobile menu */
-.fixed.inset-0.z-\[110\] {
-  z-index: 60 !important;
-}
-
-/* Ensure the Mobile Menu is above the header and search */
-.fixed.z-\[100\] {
-  z-index: 100 !important;
-}
-
-/* Glass Blur Effect */
+/* Original Glass Blur Effect */
 .backdrop-blur-md {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
-/* Animations */
+/* Original Z-Index logic for overlays */
+.fixed.inset-0.z-\[110\] { z-index: 60 !important; }
+.fixed.z-\[100\] { z-index: 100 !important; }
+
+/* Navbar Item Styling */
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item:hover {
+  opacity: 0.7;
+}
+
+.khmer-label {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: black;
+  line-height: 1;
+}
+
+.english-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #6b7280; /* gray-500 */
+  margin-top: 2px;
+}
+
+/* Active Link State (Matches your original active style) */
+.active-link .khmer-label {
+  color: black;
+}
+.active-link .english-label {
+  color: black;
+  font-weight: 700;
+}
+
+/* Original Animations */
 @keyframes slide-down {
   from { transform: translateY(-30px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 .animate-slide-down { animation: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-
-@keyframes slide-in {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-.animate-slide-in { animation: slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 
 @keyframes fade-in {
   from { opacity: 0; }
