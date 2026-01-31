@@ -18,7 +18,7 @@ export class MobileNav {
   @Output() onLogin = new EventEmitter<void>();
   @Output() onLogout = new EventEmitter<void>();
 
-  // Helper to handle closing and navigating in one go
+  // Closes the menu when a thumbnail is clicked
   handleSelection() {
     this.onClose.emit();
   }

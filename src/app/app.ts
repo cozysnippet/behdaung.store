@@ -9,7 +9,7 @@ import {QuickNav} from './components/quick-nav/quick-nav';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Footer, Header, SocialFloat, QuickNav],
+  imports: [RouterOutlet, Footer, Header, SocialFloat],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

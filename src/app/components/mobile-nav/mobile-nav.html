@@ -1,65 +1,136 @@
 <div class="fixed inset-0 z-[120] lg:hidden">
-  <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" (click)="onClose.emit()"></div>
+  <div class="absolute inset-0 bg-black/20 backdrop-blur-sm" (click)="onClose.emit()"></div>
 
-  <div class="absolute inset-y-0 left-0 w-full max-w-[85%] bg-white shadow-2xl flex flex-col animate-slide-in">
+  <div class="absolute inset-y-0 left-0 w-full max-w-[320px] bg-white flex flex-col animate-slide-in shadow-[20px_0_60px_rgba(0,0,0,0.05)]">
 
-    <div class="px-6 py-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-      <span class="font-khmer-body font-bold text-xl text-black">បេះដូង.</span>
-      <button (click)="onClose.emit()" class="p-2 -mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+    <div class="px-8 pt-10 pb-6 flex justify-between items-center">
+      <span class="font-khmer-body font-bold text-2xl tracking-tighter text-black">បេះដូង.</span>
+      <button (click)="onClose.emit()" class="p-2 text-black/40 hover:text-black transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
-    <div class="flex-1 overflow-y-auto px-6 py-8">
-      <ul class="space-y-6">
-        <li>
-          <div (click)="onToggleAccordion.emit('shop')" class="flex justify-between items-center cursor-pointer">
-            <span class="text-sm font-bold uppercase tracking-widest">Shop</span>
-            <span class="text-gray-400 font-light">{{ activeMobileTab === 'shop' ? '—' : '+' }}</span>
+    <div class="flex-1 overflow-y-auto no-scrollbar">
+
+      <div class="px-8 py-4">
+        <div class="flex gap-6 overflow-x-auto no-scrollbar">
+
+          <div (click)="handleSelection()" routerLink="/shop/new" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 rounded-full bg-gray-50 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
+            </div>
+            <span class="text-[11px] font-bold text-black/60 group-active:text-black">ថ្មីៗ</span>
           </div>
 
-          <ul *ngIf="activeMobileTab === 'shop'" class="mt-4 ml-4 space-y-4 text-gray-500 text-xs border-l border-gray-200 pl-4 animate-fade-in">
-            <li routerLink="/shop" (click)="onClose.emit()">Bags</li>
-            <li routerLink="/shop" (click)="onClose.emit()">Clothing</li>
-            <li routerLink="/shop" (click)="onClose.emit()">Accessories</li>
-            <li routerLink="/shop" (click)="onClose.emit()" class="font-bold text-black uppercase">Shop All</li>
-          </ul>
-        </li>
+          <div (click)="handleSelection()" routerLink="/shop/women" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 rounded-full bg-gray-100 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
+              <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
+            </div>
+            <span class="text-[11px] font-bold text-black/60 group-active:text-black">នារី</span>
+          </div>
 
-        <li routerLink="/new-arrivals" (click)="onClose.emit()" class="text-sm font-bold uppercase tracking-widest flex justify-between cursor-pointer">
-          New Arrivals <span class="text-gray-400">→</span>
-        </li>
+          <div (click)="handleSelection()" routerLink="/shop/men" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 rounded-full bg-gray-100 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
+              <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
+            </div>
+            <span class="text-[11px] font-bold text-black/60 group-active:text-black">បុរស</span>
+          </div>
 
-        <li routerLink="/sales" (click)="onClose.emit()" class="text-sm font-bold uppercase tracking-widest flex justify-between cursor-pointer">
-          Sales <span class="text-gray-400">→</span>
-        </li>
+          <div (click)="handleSelection()" routerLink="/shop/accessories" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 rounded-full bg-gray-50 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
+              <img src="https://images.unsplash.com/photo-1576053139778-7e32f2ae3cfd?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
+            </div>
+            <span class="text-[11px] font-bold text-black/60 group-active:text-black">គ្រឿងអលង្ការ</span>
+          </div>
 
-        <li routerLink="/journal" (click)="onClose.emit()" class="text-sm font-bold uppercase tracking-widest flex justify-between border-b border-gray-100 pb-6 cursor-pointer">
-          Journal <span class="text-gray-400">→</span>
-        </li>
+          <div (click)="handleSelection()" routerLink="/shop/shoes" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 rounded-full bg-gray-50 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
+              <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
+            </div>
+            <span class="text-[11px] font-bold text-black/60 group-active:text-black">ស្បែកជើង</span>
+          </div>
 
-        <li class="text-sm text-gray-400 pt-2 uppercase tracking-widest font-medium">Stores</li>
-      </ul>
+          <div (click)="handleSelection()" routerLink="/sales" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+            <div class="w-14 h-14 rounded-full bg-red-50 p-[2px] border border-red-100 group-active:scale-95 transition-all shadow-sm">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
+            </div>
+            <span class="text-[11px] font-bold text-red-500/70 group-active:text-red-500">បញ្ចុះតម្លៃ</span>
+          </div>
+
+        </div>
+      </div>
+
+      <nav class="px-8 py-10">
+        <ul class="space-y-10">
+
+          <li routerLink="/shop/new" (click)="onClose.emit()" class="group cursor-pointer">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">ទំនិញថ្មីៗ</span>
+              <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">New Arrivals</span>
+            </div>
+          </li>
+
+          <li>
+            <div (click)="onToggleAccordion.emit('shop')" class="flex justify-between items-center cursor-pointer group">
+              <div class="flex flex-col">
+                <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">ទិញទំនិញ</span>
+                <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">Shop</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-500" [class.rotate-180]="activeMobileTab === 'shop'" fill="none" viewBox="0 0 24 24" stroke="black">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </div>
+
+            <div *ngIf="activeMobileTab === 'shop'" class="mt-8 space-y-6 animate-fade-in pl-4 border-l border-gray-100 ml-1">
+              <p (click)="handleSelection()" routerLink="/shop/women" class="text-xs text-black/50 hover:text-black font-bold">សម្រាប់នារី (Women)</p>
+              <p (click)="handleSelection()" routerLink="/shop/men" class="text-xs text-black/50 hover:text-black font-bold">សម្រាប់បុរស (Men)</p>
+              <p (click)="handleSelection()" routerLink="/shop/accessories" class="text-xs text-black/50 hover:text-black font-bold">គ្រឿងអលង្ការ (Accessories)</p>
+            </div>
+          </li>
+
+          <li routerLink="/sales" (click)="onClose.emit()" class="group cursor-pointer">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-red-500 group-active:opacity-50">បញ្ចុះតម្លៃពិសេស</span>
+              <span class="text-[9px] uppercase tracking-[0.25em] text-red-300 font-bold mt-1">Special Offers</span>
+            </div>
+          </li>
+
+          <li routerLink="/journal" (click)="onClose.emit()" class="group cursor-pointer">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">អត្ថបទថ្មីៗ</span>
+              <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">Journal</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-20 space-y-6 border-t border-gray-50 pt-8">
+          <p class="text-[10px] font-bold text-black/30 tracking-wide uppercase">សេវាកម្មអតិថិជន (Service)</p>
+          <p class="text-[10px] font-bold text-black/30 tracking-wide uppercase">ទីតាំងហាង (Store Locator)</p>
+        </div>
+      </nav>
     </div>
 
-    <div class="p-6 bg-gray-50 border-t border-gray-100">
+    <div class="px-8 py-8 border-t border-gray-50">
       <ng-container *ngIf="authUser; else loginBtn">
-        <div class="flex items-center gap-4">
-          <img [src]="authUser.photo_url" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover">
-          <div class="flex-1">
-            <p class="text-xs font-bold uppercase tracking-widest text-black leading-tight">{{ authUser.first_name }}</p>
-            <button (click)="onLogout.emit()" class="text-[10px] text-red-500 uppercase font-black tracking-tighter mt-1">Sign Out</button>
+        <div (click)="handleSelection()" routerLink="/account" class="flex items-center gap-4 cursor-pointer">
+          <div class="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 overflow-hidden shadow-sm">
+            <img [src]="authUser.photo_url" class="w-full h-full object-cover grayscale">
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xs font-bold text-black">{{ authUser.first_name }}</span>
+            <span class="text-[8px] uppercase tracking-wider text-gray-400 font-bold">គណនីរបស់ខ្ញុំ (My Account)</span>
           </div>
         </div>
       </ng-container>
 
       <ng-template #loginBtn>
-        <button (click)="onLogin.emit()" class="w-full bg-[#1a1a1a] text-white py-4 uppercase tracking-[0.3em] text-[10px] font-bold hover:bg-black transition-colors">
-          Log In / Register
+        <button (click)="onLogin.emit()" class="w-full bg-black text-white text-[11px] font-bold py-4 transition-all active:scale-[0.98]">
+          ចូលប្រើប្រាស់ / បង្កើតគណនី
         </button>
       </ng-template>
     </div>
+
   </div>
 </div>

@@ -3,12 +3,12 @@
   <main>
     <router-outlet></router-outlet>
   </main>
-  <app-quick-nav
-    [authUser]="headerApp.auth.currentUser()"
-    (onMenu)="headerApp.toggleMobileMenu()"
-    (onSearch)="headerApp.toggleSearch()"
-    (onProfile)="headerApp.auth.currentUser() ? null : headerApp.authDrawer.open()">
-  </app-quick-nav>
+<!--  <app-quick-nav-->
+<!--    [authUser]="headerApp.auth.currentUser()"-->
+<!--    (onMenu)="headerApp.toggleMobileMenu()"-->
+<!--    (onSearch)="headerApp.toggleSearch()"-->
+<!--    (onProfile)="headerApp.auth.currentUser() ? null : headerApp.authDrawer.open()">-->
+<!--  </app-quick-nav>-->
   <app-social-float></app-social-float>
   <app-footer></app-footer>
 </div>
