@@ -1,0 +1,40 @@
+/* Ken Burns effect */
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 25s ease-out infinite alternate;
+}
+
+/* Native Khmer Font - Ensuring it feels high-end */
+.font-khmer-bold {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-weight: 700;
+  /* Soft shadow makes text readable over any background image */
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Smooth entry animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ensure full screen height on mobile browsers */
+@media (max-width: 1024px) {
+  section {
+    height: 100svh;
+  }
+}

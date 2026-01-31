@@ -1,24 +1,45 @@
-<section class="relative h-[90vh] w-full overflow-hidden bg-gray-100">
-  <img
-    src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000"
-    alt="Fashion Model"
-    class="absolute inset-0 w-full h-full object-cover object-[center_20%]"
-  />
+<section class="relative min-h-[100svh] w-full overflow-hidden bg-white">
 
-  <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2000"
+      alt="Luxury Fashion"
+      class="w-full h-full object-cover object-[center_20%] animate-slow-zoom"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 lg:to-black/70"></div>
+  </div>
 
-  <div class="relative h-full max-w-[1600px] mx-auto px-8 flex flex-col justify-end pb-32">
-    <div class="text-white">
-      <h2 class="text-5xl font-light leading-tight mb-2 drop-shadow-sm">
-        Elevate Your Style
+  <div class="relative h-full max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col justify-end pt-32 pb-20 lg:pb-32">
+
+    <div class="max-w-4xl animate-fade-in-up">
+      <div class="flex items-center gap-4 mb-6 lg:mb-10">
+        <span class="w-12 h-[1px] bg-white/80"></span>
+        <p class="text-[10px] text-white uppercase tracking-[0.6em] font-bold">New Arrival • ២០២៤</p>
+      </div>
+
+      <h2 class="text-white mb-10">
+        <span class="block font-khmer-bold text-5xl lg:text-8xl mb-4 tracking-wide leading-[1.2]">
+          បណ្តុះមន្តស្នេហ៍<br class="hidden lg:block">ក្នុងខ្លួនអ្នក
+        </span>
+        <span class="block font-serif italic text-2xl lg:text-5xl opacity-80 tracking-tight lowercase">
+          the art of timeless elegance
+        </span>
       </h2>
-      <p class="text-4xl font-light mb-8 opacity-90">
-        Timeless Fashion, Sustainable Choices
-      </p>
 
-      <button class="bg-white text-black px-10 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-all duration-500 shadow-xl">
-        Shop Now
-      </button>
+      <div class="flex flex-col sm:flex-row gap-6 mt-4">
+        <button class="bg-white text-black px-14 py-5 text-[11px] uppercase tracking-[0.4em] font-bold transition-all duration-500 hover:bg-black hover:text-white active:scale-95 shadow-2xl">
+          ទិញទំនិញឥឡូវនេះ
+        </button>
+
+        <button class="backdrop-blur-md bg-white/5 border border-white/20 text-white px-12 py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-white/10 transition-all">
+          Explore Lookbook
+        </button>
+      </div>
     </div>
+  </div>
+
+  <div class="absolute bottom-10 right-12 hidden lg:flex flex-col items-center gap-6">
+    <span class="text-white/40 text-[9px] uppercase tracking-[0.5em] [writing-mode:vertical-lr]">Discover</span>
+    <div class="w-[1px] h-20 bg-gradient-to-b from-white/60 to-transparent"></div>
   </div>
 </section>
