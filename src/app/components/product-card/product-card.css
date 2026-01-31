@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.group {
+  /* This prevents the text from shifting during image zoom */
+  backface-visibility: hidden;
+}
+
+/* Luxury brands use very slow, graceful transitions */
+img {
+  will-change: transform;
+}
+
+/* Add a subtle highlight to the swatches on hover */
+.rounded-full:hover {
+  transform: scale(1.2);
+  border-color: #000;
+  transition: all 0.2s ease;
+}
