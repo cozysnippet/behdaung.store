@@ -6,66 +6,20 @@ import { RouterLink } from '@angular/router';
   selector: 'app-mobile-nav',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  template: `
-    <div class="fixed inset-0 z-[120] lg:hidden">
-      <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" (click)="onClose.emit()"></div>
-
-      <div class="absolute inset-y-0 left-0 w-full max-w-[85%] bg-white shadow-2xl flex flex-col animate-slide-in">
-        <div class="px-6 py-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-          <span class="font-khmer-body font-bold text-xl text-black">បេះដូង.</span>
-          <button (click)="onClose.emit()" class="p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <div class="flex-1 overflow-y-auto px-6 py-8">
-          <ul class="space-y-6">
-            <li>
-              <div (click)="onToggleAccordion.emit('shop')" class="flex justify-between items-center cursor-pointer">
-                <span class="text-sm font-bold uppercase tracking-widest">Shop</span>
-                <span class="text-gray-400">{{ activeMobileTab === 'shop' ? '—' : '+' }}</span>
-              </div>
-              <ul *ngIf="activeMobileTab === 'shop'" class="mt-4 ml-4 space-y-4 text-gray-500 text-xs border-l border-gray-200 pl-4 animate-fade-in">
-                <li routerLink="/shop" (click)="onClose.emit()">Bags</li>
-                <li routerLink="/shop" (click)="onClose.emit()">Clothing</li>
-                <li routerLink="/shop" (click)="onClose.emit()">Accessories</li>
-                <li routerLink="/shop" (click)="onClose.emit()" class="font-bold text-black uppercase">Shop All</li>
-              </ul>
-            </li>
-            <li routerLink="/new-arrivals" (click)="onClose.emit()" class="text-sm font-bold uppercase tracking-widest flex justify-between">New Arrivals <span class="text-gray-400">→</span></li>
-            <li routerLink="/sales" (click)="onClose.emit()" class="text-sm font-bold uppercase tracking-widest flex justify-between">Sales <span class="text-gray-400">→</span></li>
-            <li routerLink="/journal" (click)="onClose.emit()" class="text-sm font-bold uppercase tracking-widest flex justify-between border-b border-gray-100 pb-6">Journal <span class="text-gray-400">→</span></li>
-            <li class="text-sm text-gray-500 pt-2 uppercase tracking-widest">Stores</li>
-          </ul>
-        </div>
-
-        <div class="p-6 bg-gray-50 border-t border-gray-100">
-          <ng-container *ngIf="authUser; else loginBtn">
-            <div class="flex items-center gap-4">
-              <img [src]="authUser.photo_url" class="w-10 h-10 rounded-full border border-white shadow-sm object-cover">
-              <div class="flex-1">
-                <p class="text-xs font-bold uppercase tracking-widest text-black">{{ authUser.first_name }}</p>
-                <button (click)="onLogout.emit()" class="text-[10px] text-red-500 uppercase font-bold mt-1">Sign Out</button>
-              </div>
-            </div>
-          </ng-container>
-          <ng-template #loginBtn>
-            <button (click)="onLogin.emit()" class="w-full bg-[#1a1a1a] text-white py-4 uppercase tracking-[0.3em] text-[10px]">
-              Log In / Register
-            </button>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-  `
+  templateUrl: './mobile-nav.html',
+  styleUrls: ['./mobile-nav.css']
 })
 export class MobileNav {
   @Input() authUser: any;
   @Input() activeMobileTab: string | null = null;
+
   @Output() onClose = new EventEmitter<void>();
   @Output() onToggleAccordion = new EventEmitter<string>();
   @Output() onLogin = new EventEmitter<void>();
   @Output() onLogout = new EventEmitter<void>();
+
+  // Helper to handle closing and navigating in one go
+  handleSelection() {
+    this.onClose.emit();
+  }
 }
