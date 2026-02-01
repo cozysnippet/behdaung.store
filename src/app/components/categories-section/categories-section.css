@@ -1,0 +1,26 @@
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.font-khmer-bold {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* On laptop, we want to see more items, so we limit the max height */
+@media (min-width: 1024px) {
+  .aspect-\[4\/5\] {
+    max-height: 450px; /* Keeps the images from becoming too tall */
+  }
+}
+
+/* Smooth reveal as you scroll down the page */
+.snap-center {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealUp 0.8s ease-out forwards;
+}
+
+@keyframes revealUp {
+  to { opacity: 1; transform: translateY(0); }
+}

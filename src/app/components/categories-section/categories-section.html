@@ -1,48 +1,48 @@
-<section class="w-full bg-white py-20">
-  <div class="max-w-[1600px] mx-auto px-8 md:px-16">
+<section class="w-full bg-[#fcfcfc] py-16 lg:py-24 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
 
-    <div class="mb-16 max-w-2xl">
-      <h2 class="text-2xl font-light leading-snug text-gray-900 font-khmer-body">
-        Elevate your lifestyle with a more intelligent, superior wardrobe.
-        Our range is crafted sustainably with longevity in mind.
-      </h2>
+    <div class="relative mb-12 lg:mb-16">
+      <div class="relative z-10">
+        <div class="flex items-center gap-4 mb-3">
+          <span class="w-10 h-[1px] bg-[#C5A059]"></span>
+          <p class="text-[9px] text-[#C5A059] uppercase tracking-[0.5em] font-bold">ស្វែងរកតាមជម្រើស</p>
+        </div>
+        <h2 class="text-black font-khmer-bold text-4xl lg:text-5xl">សម្រាំងគុណភាព</h2>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="flex lg:grid lg:grid-cols-4 gap-6 lg:gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-10">
 
-      <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1000"
-          alt="New Arrivals"
-          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black/5 transition-opacity group-hover:bg-black/20"></div>
-        <div class="absolute bottom-8 left-8">
-          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">New Arrivals</h3>
+      <div *ngFor="let cat of categories; let i = index"
+           (click)="navigateToCategory(cat.id)"
+           class="min-w-[80%] md:min-w-[40%] lg:min-w-0 snap-center group cursor-pointer relative">
+
+        <div class="relative overflow-hidden aspect-[3/4] lg:aspect-[4/5] rounded-sm mb-5 bg-gray-100 shadow-sm group-hover:shadow-xl transition-all duration-700">
+          <img [src]="cat.img" class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105">
+
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500 flex items-center justify-center">
+            <div class="w-14 h-14 rounded-full border border-white/40 bg-white/10 backdrop-blur-md opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </div>
+          </div>
+
+          <div class="absolute bottom-4 right-4 lg:hidden">
+            <div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md">
+              <span class="text-[8px] font-bold uppercase tracking-widest text-black">Explore</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000"
-          alt="The Casual Edit"
-          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black/5 transition-opacity group-hover:bg-black/20"></div>
-        <div class="absolute bottom-8 left-8">
-          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">The Casual Edit</h3>
-        </div>
-      </div>
+        <div class="px-1">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-khmer-bold text-xl lg:text-2xl text-gray-900 transition-colors group-hover:text-[#C5A059]">{{cat.khmerTitle}}</h3>
+            <span class="text-[10px] text-gray-300 font-medium">/ {{cat.id}}</span>
+          </div>
+          <p class="text-[9px] lg:text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">{{cat.englishTitle}}</p>
 
-      <div class="group relative aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000"
-          alt="Best Sellers"
-          class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black/5 transition-opacity group-hover:bg-black/20"></div>
-        <div class="absolute bottom-8 left-8">
-          <h3 class="text-white text-lg font-light tracking-wide font-khmer-body uppercase">Best-Sellers</h3>
+          <div class="w-full h-[1px] bg-gray-100 mt-4 relative">
+            <div class="absolute inset-0 bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
+          </div>
         </div>
       </div>
 
