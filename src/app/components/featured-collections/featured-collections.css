@@ -1,0 +1,31 @@
+.font-khmer-bold {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Image Reveal Animation */
+.relative img {
+  opacity: 0;
+  animation: imgFade 1.5s ease-out forwards;
+}
+
+@keyframes imgFade {
+  from { opacity: 0; transform: scale(1.1); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Scroll Animation for Content Card */
+@media (min-width: 1024px) {
+  .lg\:absolute {
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Mobile Tweak: Ensure the overlap looks intentional */
+@media (max-width: 1023px) {
+  .-mt-20 {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}

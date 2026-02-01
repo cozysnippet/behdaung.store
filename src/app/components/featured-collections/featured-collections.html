@@ -1,34 +1,45 @@
-<section class="w-full bg-white py-12 pb-24">
-  <div class="max-w-[1600px] mx-auto px-8 md:px-16">
+<section class="w-full bg-[#f8f8f8] py-20 lg:py-32 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="flex items-center gap-3 mb-16 lg:mb-24">
+      <span class="w-8 h-[1px] bg-[#C5A059]"></span>
+      <span class="text-[10px] uppercase tracking-[0.4em] text-[#C5A059] font-bold">Featured Stories</span>
+    </div>
 
-      <div class="group relative aspect-[4/5] overflow-hidden bg-gray-100 cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1595991209266-5ff5a3a2f008?q=80&w=1200"
-          alt="The Smart Chic"
-          class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black/5 group-hover:bg-black/15 transition-colors"></div>
+    <div class="space-y-32 lg:space-y-48">
+      <div *ngFor="let col of collections; let i = index"
+           class="relative flex flex-col"
+           [ngClass]="col.align === 'right' ? 'lg:items-end' : 'lg:items-start'">
 
-        <div class="absolute bottom-10 left-10">
-          <h3 class="text-white text-2xl font-light tracking-wide font-khmer-body">The Smart Chic</h3>
+        <div class="relative w-full lg:w-[65%] aspect-[16/10] lg:aspect-[16/9] overflow-hidden rounded-sm shadow-2xl">
+          <img [src]="col.image"
+               class="w-full h-full object-cover transition-transform duration-[3s] hover:scale-105"
+               [alt]="col.englishTitle">
+          <div class="absolute inset-0 bg-black/10"></div>
+        </div>
+
+        <div class="relative z-10 -mt-20 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 p-8 lg:p-16 bg-white shadow-xl max-w-[90%] lg:max-w-[450px]"
+             [ngClass]="col.align === 'right' ? 'lg:right-[55%]' : 'lg:left-[55%]'">
+
+          <span class="text-[9px] text-[#C5A059] font-bold tracking-[0.3em] uppercase mb-4 block">Collection {{i + 1}}</span>
+
+          <h3 class="font-khmer-bold text-3xl lg:text-4xl text-black mb-2">{{col.khmerTitle}}</h3>
+          <p class="text-[11px] uppercase tracking-[0.2em] text-gray-400 font-medium mb-6">{{col.englishTitle}}</p>
+
+          <p class="text-gray-600 text-sm leading-relaxed mb-8 font-light">
+            {{col.description}}
+          </p>
+
+          <button class="group flex items-center gap-4">
+            <span class="font-khmer-bold text-[14px] tracking-wide border-b border-black pb-1 group-hover:text-[#C5A059] group-hover:border-[#C5A059] transition-all">
+              ស្វែងរកបន្ថែម
+            </span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
         </div>
       </div>
-
-      <div class="group relative aspect-[4/5] overflow-hidden bg-gray-100 cursor-pointer">
-        <img
-          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200"
-          alt="Ready To Go"
-          class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black/5 group-hover:bg-black/15 transition-colors"></div>
-
-        <div class="absolute bottom-10 left-10">
-          <h3 class="text-white text-2xl font-light tracking-wide font-khmer-body">Ready To Go</h3>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
