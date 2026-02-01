@@ -17,39 +17,32 @@
       <div class="px-8 py-4">
         <div class="flex gap-6 overflow-x-auto no-scrollbar">
 
-          <div (click)="handleSelection()" routerLink="/shop/new" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+          <div (click)="handleSelection()" routerLink="/new-arrivals" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
             <div class="w-14 h-14 rounded-full bg-gray-50 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
               <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
             </div>
             <span class="text-[11px] font-bold text-black/60 group-active:text-black">ថ្មីៗ</span>
           </div>
 
-          <div (click)="handleSelection()" routerLink="/shop/women" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+          <div (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'women'}" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
             <div class="w-14 h-14 rounded-full bg-gray-100 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
               <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
             </div>
             <span class="text-[11px] font-bold text-black/60 group-active:text-black">នារី</span>
           </div>
 
-          <div (click)="handleSelection()" routerLink="/shop/men" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+          <div (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'men'}" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
             <div class="w-14 h-14 rounded-full bg-gray-100 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
               <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
             </div>
             <span class="text-[11px] font-bold text-black/60 group-active:text-black">បុរស</span>
           </div>
 
-          <div (click)="handleSelection()" routerLink="/shop/accessories" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
+          <div (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'accessories'}" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
             <div class="w-14 h-14 rounded-full bg-gray-50 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
               <img src="https://images.unsplash.com/photo-1576053139778-7e32f2ae3cfd?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
             </div>
             <span class="text-[11px] font-bold text-black/60 group-active:text-black">គ្រឿងអលង្ការ</span>
-          </div>
-
-          <div (click)="handleSelection()" routerLink="/shop/shoes" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
-            <div class="w-14 h-14 rounded-full bg-gray-50 p-[2px] border border-gray-100 group-active:scale-95 transition-all shadow-sm">
-              <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=200" class="w-full h-full rounded-full object-cover grayscale-[0.3]">
-            </div>
-            <span class="text-[11px] font-bold text-black/60 group-active:text-black">ស្បែកជើង</span>
           </div>
 
           <div (click)="handleSelection()" routerLink="/sales" class="flex flex-col items-center gap-2 flex-shrink-0 cursor-pointer group">
@@ -65,7 +58,7 @@
       <nav class="px-8 py-10">
         <ul class="space-y-10">
 
-          <li routerLink="/shop/new" (click)="onClose.emit()" class="group cursor-pointer">
+          <li routerLink="/new-arrivals" (click)="handleSelection()" class="group cursor-pointer">
             <div class="flex flex-col">
               <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">ទំនិញថ្មីៗ</span>
               <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">New Arrivals</span>
@@ -84,20 +77,23 @@
             </div>
 
             <div *ngIf="activeMobileTab === 'shop'" class="mt-8 space-y-6 animate-fade-in pl-4 border-l border-gray-100 ml-1">
-              <p (click)="handleSelection()" routerLink="/shop/women" class="text-xs text-black/50 hover:text-black font-bold">សម្រាប់នារី (Women)</p>
-              <p (click)="handleSelection()" routerLink="/shop/men" class="text-xs text-black/50 hover:text-black font-bold">សម្រាប់បុរស (Men)</p>
-              <p (click)="handleSelection()" routerLink="/shop/accessories" class="text-xs text-black/50 hover:text-black font-bold">គ្រឿងអលង្ការ (Accessories)</p>
+              <p (click)="handleSelection()" routerLink="/shop" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">ទំនិញទាំងអស់ (All Products)</p>
+
+              <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'women'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">សម្រាប់នារី (Women)</p>
+              <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'men'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">សម្រាប់បុរស (Men)</p>
+              <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'accessories'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">គ្រឿងអលង្ការ (Accessories)</p>
+              <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'shoes'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">ស្បែកជើង (Shoes)</p>
             </div>
           </li>
 
-          <li routerLink="/sales" (click)="onClose.emit()" class="group cursor-pointer">
+          <li routerLink="/sales" (click)="handleSelection()" class="group cursor-pointer">
             <div class="flex flex-col">
               <span class="text-sm font-bold text-red-500 group-active:opacity-50">បញ្ចុះតម្លៃពិសេស</span>
               <span class="text-[9px] uppercase tracking-[0.25em] text-red-300 font-bold mt-1">Special Offers</span>
             </div>
           </li>
 
-          <li routerLink="/journal" (click)="onClose.emit()" class="group cursor-pointer">
+          <li routerLink="/journal" (click)="handleSelection()" class="group cursor-pointer">
             <div class="flex flex-col">
               <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">អត្ថបទថ្មីៗ</span>
               <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">Journal</span>
@@ -106,8 +102,8 @@
         </ul>
 
         <div class="mt-20 space-y-6 border-t border-gray-50 pt-8">
-          <p class="text-[10px] font-bold text-black/30 tracking-wide uppercase">សេវាកម្មអតិថិជន (Service)</p>
-          <p class="text-[10px] font-bold text-black/30 tracking-wide uppercase">ទីតាំងហាង (Store Locator)</p>
+          <p (click)="handleSelection()" routerLink="/shipping" class="text-[10px] font-bold text-black/30 tracking-wide uppercase cursor-pointer hover:text-black">សេវាកម្មអតិថិជន (Service)</p>
+          <p (click)="handleSelection()" routerLink="/stores" class="text-[10px] font-bold text-black/30 tracking-wide uppercase cursor-pointer hover:text-black">ទីតាំងហាង (Store Locator)</p>
         </div>
       </nav>
     </div>
