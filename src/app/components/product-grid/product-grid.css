@@ -1,0 +1,66 @@
+/* Ensure Khmer Font is Bold and Clean */
+.font-khmer-bold {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Precise Staggered Spacing */
+.staggered-mt {
+  margin-top: 3rem; /* Mobile offset */
+}
+
+@media (min-width: 1024px) {
+  .staggered-mt {
+    margin-top: 6rem; /* Desktop offset */
+  }
+}
+
+/* Card Entrance Animation */
+.product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Product Card Delays */
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Image Container Refinement */
+.img-container {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Link Interaction */
+.view-all-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.view-all-link:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+.animated-underline {
+  height: 1px;
+}
+
+.line-fill {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}

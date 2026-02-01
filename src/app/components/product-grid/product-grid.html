@@ -1,90 +1,53 @@
-<section class="w-full bg-white py-16">
-  <div class="max-w-[1600px] mx-auto px-8 md:px-16">
+<section class="product-section w-full bg-white py-20 lg:py-32">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
 
-    <div class="mb-12">
-      <h2 class="text-xl font-medium tracking-wide font-khmer-body text-gray-900">
-        What to Wear Now
-      </h2>
+    <div class="flex flex-col mb-16 lg:mb-24">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="accent-line w-8 h-[1px] bg-[#C5A059]"></span>
+        <span class="text-[10px] uppercase tracking-[0.4em] text-[#C5A059] font-bold">Shop the look</span>
+      </div>
+      <h2 class="font-khmer-bold text-4xl lg:text-5xl text-black">ទំនិញពេញនិយម</h2>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-12 lg:gap-x-10 lg:gap-y-24">
+      <div *ngFor="let p of products; let i = index"
+           (click)="onProductClick(p.id)"
+           class="product-card group cursor-pointer"
+           [ngClass]="{'staggered-mt': i % 2 !== 0}">
 
-      <div class="group cursor-pointer">
-        <div class="relative aspect-[4/5] bg-[#F6F6F6] mb-4 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800"
-               class="w-full h-full object-cover" alt="Classic Easy Zipper Tote">
-          <button class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
+        <div class="img-container relative aspect-[3/4] overflow-hidden bg-[#F9F9F9] mb-6 rounded-sm shadow-sm">
+          <img [src]="p.image" class="w-full h-full object-cover transition-all duration-[1.5s] group-hover:scale-110">
+
+          <div *ngIf="p.tag" class="absolute top-4 left-4">
+            <span class="bg-white/90 backdrop-blur-sm text-[8px] uppercase tracking-widest font-bold px-3 py-1 text-black">
+              {{p.tag}}
+            </span>
+          </div>
         </div>
-        <h3 class="text-[13px] font-medium text-gray-900 mb-1">Classic Easy Zipper Tote</h3>
-        <p class="text-[13px] text-gray-500 font-light">$298</p>
+
+        <div class="product-info space-y-2">
+          <div class="flex justify-between items-start">
+            <div class="space-y-1">
+              <h3 class="font-khmer-bold text-lg text-gray-900 group-hover:text-[#C5A059] transition-colors">{{p.nameKh}}</h3>
+              <p class="text-[10px] text-gray-400 uppercase tracking-widest">{{p.nameEn}}</p>
+            </div>
+            <p class="text-sm font-medium text-gray-900">${{p.price}}</p>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="group cursor-pointer">
-        <div class="relative aspect-[4/5] bg-[#F6F6F6] mb-4 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800"
-               class="w-full h-full object-cover" alt="Concertina Phone Bag">
-          <button class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
+    <div class="mt-24 lg:mt-32 flex justify-center">
+      <button
+        (click)="onViewAll()"
+        class="view-all-link group/btn flex flex-col items-center gap-3">
+        <span class="font-khmer-bold text-[15px] text-gray-900 tracking-wide group-hover/btn:text-[#C5A059] transition-colors">
+          មើលទំនិញទាំងអស់
+        </span>
+        <div class="animated-underline relative w-12 h-[1px] bg-gray-200 overflow-hidden">
+          <div class="line-fill absolute inset-0 bg-black -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500"></div>
         </div>
-        <h3 class="text-[13px] font-medium text-gray-900 mb-1">Concertina Phone Bag</h3>
-        <p class="text-[13px] text-gray-500 font-light">$248</p>
-      </div>
-
-      <div class="group cursor-pointer">
-        <div class="relative aspect-[4/5] bg-[#F6F6F6] mb-4 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=800"
-               class="w-full h-full object-cover" alt="Wool Cashmere Sweater Coat">
-          <button class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
-        </div>
-        <h3 class="text-[13px] font-medium text-gray-900 mb-1">Wool Cashmere Sweater Coat</h3>
-        <p class="text-[13px] text-gray-500 font-light">$398</p>
-      </div>
-
-      <div class="group cursor-pointer">
-        <div class="relative aspect-[4/5] bg-[#F6F6F6] mb-4 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1609561812031-24e3312230f4?q=80&w=800"
-               class="w-full h-full object-cover" alt="Cashmere Beanie">
-          <button class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
-        </div>
-        <p class="text-[11px] text-gray-400 mb-1">Camel</p>
-        <div class="flex space-x-2 mb-2">
-          <span class="w-3 h-3 rounded-full bg-[#C4A484] border border-gray-200"></span>
-          <span class="w-3 h-3 rounded-full bg-black"></span>
-          <span class="w-3 h-3 rounded-full bg-pink-200"></span>
-        </div>
-        <h3 class="text-[13px] font-medium text-gray-900 mb-1">Single-Origin Cashmere Beanie</h3>
-        <p class="text-[13px] text-gray-500 font-light">$98</p>
-      </div>
-
-      <div class="group cursor-pointer">
-        <div class="relative aspect-[4/5] bg-[#F6F6F6] mb-4 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800"
-               class="w-full h-full object-cover" alt="Alpaca Wool Cardigan">
-          <button class="absolute bottom-4 right-4 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-          </button>
-        </div>
-        <h3 class="text-[13px] font-medium text-gray-900 mb-1">Alpaca Wool Cropped Cardigan</h3>
-        <p class="text-[13px] text-gray-500 font-light">$248</p>
-      </div>
-
+      </button>
     </div>
   </div>
 </section>
