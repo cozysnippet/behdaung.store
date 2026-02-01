@@ -1,0 +1,23 @@
+.font-khmer-bold {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+h3 {
+  letter-spacing: 0.02em;
+}
+
+p {
+  font-family: 'Inter', sans-serif; /* Use a clean sans-serif for the body text */
+}
+
+/* Subtle entrance animation */
+section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

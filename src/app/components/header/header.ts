@@ -6,11 +6,12 @@ import { AuthDrawer } from '../auth-drawer/auth-drawer';
 import {MobileNav} from '../mobile-nav/mobile-nav';
 import {SearchOverlay} from '../search-overlay/search-overlay';
 import {CartDrawer} from '../cart-drawer/cart-drawer';
+import {AnnouncementBar} from '../announcement-bar/announcement-bar';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, AuthDrawer, SearchOverlay, MobileNav, CartDrawer],
+  imports: [CommonModule, RouterLink, RouterLinkActive, AuthDrawer, SearchOverlay, MobileNav, CartDrawer, AnnouncementBar],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })

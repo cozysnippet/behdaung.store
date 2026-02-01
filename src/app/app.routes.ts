@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import {ProductDetail} from './pages/product-detail/product-detail';
-import {NewArrivals} from './pages/new-arrivals/new-arrivals';
 
 export const routes: Routes = [
   {
@@ -28,9 +26,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/stores/stores').then(m => m.Stores)
   },
   {
-    path: 'product/:id', // The ':id' allows you to load different products on the same page layout
+    path: 'product/:id',
     loadComponent: () => import('./pages/product-detail/product-detail').then(m => m.ProductDetail)
   },
-  { path: 'new-arrivals', loadComponent: () => import('./pages/new-arrivals/new-arrivals').then(m => m.NewArrivals) },
+  // --- ADDED THE SHIPPING ROUTE HERE ---
+  {
+    path: 'shipping',
+    loadComponent: () => import('./pages/shipping/shipping').then(m => m.Shipping)
+  },
+  // -------------------------------------
   { path: '**', redirectTo: '' }
 ];

@@ -1,0 +1,22 @@
+.announcement-wrapper {
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px; /* Ensures consistent height across languages */
+}
+
+.font-khmer-body {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 11px; /* Slightly larger for Khmer readability */
+  letter-spacing: 0.05em; /* Less tracking than English for Khmer script */
+  line-height: 1.6;
+}
+
+/* Responsive adjustment */
+@media (max-width: 640px) {
+  .font-khmer-body {
+    font-size: 10px;
+    letter-spacing: 0.02em;
+  }
+}
