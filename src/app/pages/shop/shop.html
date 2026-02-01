@@ -1,14 +1,18 @@
 <div class="min-h-screen bg-white">
   <div class="sticky top-[119px] z-10 bg-white/95 backdrop-blur-md border-b border-gray-100 lg:hidden">
     <div class="flex justify-between items-center px-6 py-4">
-      <span class="text-[10px] uppercase tracking-[0.3em] font-bold">{{ selectedCategory }} ({{products.length}})</span>
-      <button (click)="toggleFilter()" class="text-[10px] uppercase tracking-[0.2em] font-bold">Filter</button>
+      <div class="flex flex-col">
+        <span class="text-[11px] font-bold text-black font-khmer-body">{{ selectedCategory }}</span>
+        <span class="text-[9px] text-gray-400 uppercase tracking-widest">{{ filteredProducts.length }} Products</span>
+      </div>
+      <button (click)="toggleFilter()" class="text-[11px] font-bold border border-black px-4 py-2 rounded-full font-khmer-body">
+        ចម្រាញ់ (Filter)
+      </button>
     </div>
   </div>
 
   <div class="max-w-[1600px] mx-auto px-4 md:px-12 py-8 md:py-16">
     <div class="flex flex-col lg:flex-row gap-12">
-
       <app-filter-sidebar
         [categories]="categories"
         [activeCategory]="selectedCategory"
@@ -16,8 +20,8 @@
       </app-filter-sidebar>
 
       <main class="flex-grow">
-        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 md:gap-x-10 gap-y-10 md:gap-y-20">
-          @for (product of products; track product.id) {
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-10 gap-y-12">
+          @for (product of filteredProducts; track product.id) {
             <app-product-card [product]="product"></app-product-card>
           }
         </div>
@@ -29,7 +33,7 @@
     *ngIf="isMobileFilterOpen"
     [categories]="categories"
     [activeCategory]="selectedCategory"
-    (onClose)="toggleFilter()"
-    (onSelect)="handleCategorySelect($event)">
+    (onSelect)="handleCategorySelect($event)"
+    (onClose)="toggleFilter()">
   </app-mobile-filter>
 </div>

@@ -6,11 +6,12 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-  discountPrice?: number; // Added for discount logic
+  discountPrice?: number;
   imageUrl: string;
-  color: string;
+  color?: string; // Added ? for safety
   isNew?: boolean;
-  swatches?: string[]; // Added for the 'missing' detail
+  swatches?: string[]; // Added ? for safety
+  category: string;
 }
 
 @Component({
@@ -30,6 +31,6 @@ export class ProductCard {
 
   handleQuickAdd(event: Event) {
     event.stopPropagation();
-    console.log('Quick add triggered for:', this.product.name);
+    console.log('Quick add triggered:', this.product.name);
   }
 }

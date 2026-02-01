@@ -1,31 +1,18 @@
 <div class="group cursor-pointer flex flex-col relative" [routerLink]="['/product', product.id]">
 
-  <button class="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400 hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-    </svg>
-  </button>
-
   <div class="relative aspect-[3/4] overflow-hidden bg-[#F9F9F9] mb-4">
-    <img [src]="product.imageUrl"
-         class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105">
+    <img [src]="product.imageUrl" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
 
     <div class="absolute top-3 left-3 flex flex-col gap-2">
-      @if (product.discountPrice) {
-        <div class="bg-black text-white px-2 py-1">
-          <span class="text-[8px] uppercase tracking-widest font-bold">-{{ discountPercentage }}%</span>
-        </div>
-      }
       @if (product.isNew) {
-        <div class="bg-white/90 backdrop-blur-sm px-2 py-1 shadow-sm">
-          <span class="text-[8px] uppercase tracking-widest font-bold text-gray-900">New</span>
+        <div class="bg-white px-2 py-1 shadow-sm">
+          <span class="text-[8px] uppercase tracking-widest font-bold">New</span>
         </div>
       }
     </div>
 
     <div class="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-white/80 backdrop-blur-md">
-      <button (click)="handleQuickAdd($event)"
-              class="w-full py-3 text-[10px] uppercase tracking-[0.2em] font-bold border border-black hover:bg-black hover:text-white transition-all duration-300">
+      <button (click)="handleQuickAdd($event)" class="w-full py-3 text-[10px] uppercase tracking-widest font-bold border border-black hover:bg-black hover:text-white transition-all">
         Quick Add
       </button>
     </div>
@@ -33,28 +20,15 @@
 
   <div class="space-y-1.5 px-1">
     <div class="flex justify-between items-start">
-      <h3 class="text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-gray-900 truncate pr-4">
-        {{ product.name }}
-      </h3>
-
-      <div class="flex flex-col items-end">
-        @if (product.discountPrice) {
-          <span class="text-[10px] md:text-[11px] font-bold text-gray-900">{{ product.discountPrice | currency }}</span>
-          <span class="text-[9px] text-gray-400 line-through decoration-gray-300">{{ product.price | currency }}</span>
-        } @else {
-          <span class="text-[10px] md:text-[11px] font-light text-gray-900">{{ product.price | currency }}</span>
-        }
-      </div>
+      <h3 class="text-[10px] font-bold uppercase tracking-widest truncate">{{ product.name }}</h3>
+      <span class="text-[10px] font-bold">{{ product.price | currency }}</span>
     </div>
 
     <div class="flex justify-between items-center">
-      <p class="text-[9px] text-gray-400 uppercase tracking-widest">{{ product.color }}</p>
-
-      <div class="flex gap-1.5">
-        @for (swatch of product.swatches; track swatch) {
-          <div [style.background-color]="swatch"
-               class="w-2 h-2 rounded-full border border-gray-100 ring-1 ring-transparent hover:ring-gray-300 transition-all">
-          </div>
+      <p class="text-[9px] text-gray-400 uppercase">{{ product.color }}</p>
+      <div class="flex gap-1">
+        @for (swatch of product.swatches || []; track swatch) {
+          <div [style.background-color]="swatch" class="w-2 h-2 rounded-full border border-gray-100"></div>
         }
       </div>
     </div>
