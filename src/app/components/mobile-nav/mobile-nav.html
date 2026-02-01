@@ -4,7 +4,7 @@
   <div class="absolute inset-y-0 left-0 w-full max-w-[320px] bg-white flex flex-col animate-slide-in shadow-[20px_0_60px_rgba(0,0,0,0.05)]">
 
     <div class="px-8 pt-10 pb-6 flex justify-between items-center">
-      <span class="font-khmer-body font-bold text-2xl tracking-tighter text-black">បេះដូង.</span>
+      <span (click)="handleSelection()" routerLink="/" class="font-khmer-body font-bold text-2xl tracking-tighter text-black cursor-pointer">បេះដូង.</span>
       <button (click)="onClose.emit()" class="p-2 text-black/40 hover:text-black transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M6 18L18 6M6 6l12 12" />
@@ -58,7 +58,14 @@
       <nav class="px-8 py-10">
         <ul class="space-y-10">
 
-          <li routerLink="/new-arrivals" (click)="handleSelection()" class="group cursor-pointer">
+          <li (click)="handleSelection()" routerLink="/" class="group cursor-pointer">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">ទំព័រដើម</span>
+              <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">Home</span>
+            </div>
+          </li>
+
+          <li (click)="handleSelection()" routerLink="/new-arrivals" class="group cursor-pointer">
             <div class="flex flex-col">
               <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">ទំនិញថ្មីៗ</span>
               <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">New Arrivals</span>
@@ -78,7 +85,6 @@
 
             <div *ngIf="activeMobileTab === 'shop'" class="mt-8 space-y-6 animate-fade-in pl-4 border-l border-gray-100 ml-1">
               <p (click)="handleSelection()" routerLink="/shop" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">ទំនិញទាំងអស់ (All Products)</p>
-
               <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'women'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">សម្រាប់នារី (Women)</p>
               <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'men'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">សម្រាប់បុរស (Men)</p>
               <p (click)="handleSelection()" routerLink="/shop" [queryParams]="{category: 'accessories'}" class="text-xs text-black/50 hover:text-black font-bold cursor-pointer">គ្រឿងអលង្ការ (Accessories)</p>
@@ -86,14 +92,14 @@
             </div>
           </li>
 
-          <li routerLink="/sales" (click)="handleSelection()" class="group cursor-pointer">
+          <li (click)="handleSelection()" routerLink="/sales" class="group cursor-pointer">
             <div class="flex flex-col">
               <span class="text-sm font-bold text-red-500 group-active:opacity-50">បញ្ចុះតម្លៃពិសេស</span>
               <span class="text-[9px] uppercase tracking-[0.25em] text-red-300 font-bold mt-1">Special Offers</span>
             </div>
           </li>
 
-          <li routerLink="/journal" (click)="handleSelection()" class="group cursor-pointer">
+          <li (click)="handleSelection()" routerLink="/journal" class="group cursor-pointer">
             <div class="flex flex-col">
               <span class="text-sm font-bold text-black group-active:opacity-50 transition-opacity">អត្ថបទថ្មីៗ</span>
               <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mt-1">Journal</span>
