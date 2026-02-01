@@ -1,45 +1,30 @@
-/* hero-section-one.css */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.snap-x {
+  scroll-snap-type: x mandatory;
+  scroll-padding: 2rem; /* Keeps the snapped image slightly offset to show the next one */
+}
 
 .font-khmer-bold {
   font-family: 'Kantumruy Pro', sans-serif;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
-/* Base Reveal States */
-.reveal-left, .reveal-right, .reveal-content, .reveal-bottom {
+.reveal-content {
   opacity: 0;
-  animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.reveal-left { transform: translateX(-30px); animation-delay: 0.2s; }
-.reveal-right { transform: translateX(30px); animation-delay: 0.4s; }
-.reveal-content { transform: translateY(20px); animation-delay: 0.6s; }
-.reveal-bottom { transform: translateY(40px); animation-delay: 0.8s; }
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-@keyframes reveal {
-  to {
-    opacity: 1;
-    transform: translate(0);
+/* Mobile button visible without hover */
+@media (max-width: 1024px) {
+  .lg\:opacity-0 {
+    opacity: 1 !important;
   }
-}
-
-/* Smooth Background Image Motion */
-@keyframes slow-zoom {
-  0% { transform: scale(1) rotate(0deg); }
-  100% { transform: scale(1.1) rotate(1deg); }
-}
-
-.animate-slow-zoom {
-  animation: slow-zoom 20s ease-out infinite alternate;
-}
-
-/* Button Slide Animation fix */
-button .relative.z-10 {
-  display: block;
-}
-
-/* Cursor/Interaction enhancement */
-section {
-  cursor: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='6' cy='6' r='6' fill='black'/%3E%3C/svg%3E"), auto;
 }
