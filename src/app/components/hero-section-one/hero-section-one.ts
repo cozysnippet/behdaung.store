@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-section-one',
@@ -12,9 +12,16 @@ import { Router } from '@angular/router'; // Import Router
 export class HeroSectionOne implements OnInit, OnDestroy {
   @ViewChild('heroSlider') slider!: ElementRef;
   currentSlide = 0;
+  isForward = true; // Tracks direction: true = 1->2->3, false = 3->2->1
   private autoScrollInterval: any;
 
-  constructor(private router: Router) {} // Inject Router
+  products = [
+    { id: 201, img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200' },
+    { id: 202, img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200' },
+    { id: 203, img: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200' }
+  ];
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.startAutoScroll();
@@ -22,18 +29,16 @@ export class HeroSectionOne implements OnInit, OnDestroy {
 
   onScroll() {
     const el = this.slider.nativeElement;
-    // Calculate slide based on the scroll width divided by number of slides
-    const slideWidth = el.scrollWidth / 3;
+    const slideWidth = el.offsetWidth * 0.9;
     this.currentSlide = Math.round(el.scrollLeft / slideWidth);
   }
 
   scrollToSlide(index: number) {
     const el = this.slider.nativeElement;
-    const slideWidth = el.scrollWidth / 3;
+    const slideWidth = el.offsetWidth * 0.9;
     el.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
   }
 
-  // Navigate to your product page
   goToProduct(id: number) {
     this.router.navigate(['/product', id]);
   }
@@ -43,13 +48,23 @@ export class HeroSectionOne implements OnInit, OnDestroy {
       const el = this.slider.nativeElement;
       if (!el) return;
 
-      const slideWidth = el.scrollWidth / 3;
-      if (el.scrollLeft + el.offsetWidth >= el.scrollWidth - 50) {
-        el.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        el.scrollBy({ left: slideWidth, behavior: 'smooth' });
+      const slideWidth = el.offsetWidth * 0.9;
+      const atEnd = el.scrollLeft + el.offsetWidth >= el.scrollWidth - 50;
+      const atStart = el.scrollLeft <= 10;
+
+      // Logic for forward and back loop
+      if (atEnd) {
+        this.isForward = false;
+      } else if (atStart) {
+        this.isForward = true;
       }
-    }, 5000);
+
+      if (this.isForward) {
+        el.scrollBy({ left: slideWidth, behavior: 'smooth' });
+      } else {
+        el.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+      }
+    }, 4000); // 4 seconds interval for smoother feel
   }
 
   ngOnDestroy() {

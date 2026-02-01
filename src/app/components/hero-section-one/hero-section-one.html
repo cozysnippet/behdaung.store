@@ -4,31 +4,17 @@
     <div
       #heroSlider
       (scroll)="onScroll()"
-      class="flex h-full overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth gap-4 px-4 lg:px-6"
+      class="flex h-full overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth gap-4 px-4 lg:px-10"
     >
-      <div class="min-w-[85%] lg:min-w-[90%] h-full snap-center relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/10 lg:bg-black/20 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-          <button (click)="goToProduct(201)" class="bg-white/90 backdrop-blur-md text-black px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-[#C5A059] hover:text-white transition-all transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
-            View Details — ០១
-          </button>
-        </div>
-      </div>
+      <div *ngFor="let prod of products; let i = index"
+           class="min-w-[85%] lg:min-w-[90%] h-full snap-center relative overflow-hidden rounded-sm">
 
-      <div class="min-w-[85%] lg:min-w-[90%] h-full snap-center relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/10 lg:bg-black/20 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-          <button (click)="goToProduct(202)" class="bg-white/90 backdrop-blur-md text-black px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-[#C5A059] hover:text-white transition-all transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
-            View Details — ០២
-          </button>
-        </div>
-      </div>
+        <img [src]="prod.img" class="w-full h-full object-cover">
 
-      <div class="min-w-[85%] lg:min-w-[90%] h-full snap-center relative overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/10 lg:bg-black/20 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-          <button (click)="goToProduct(203)" class="bg-white/90 backdrop-blur-md text-black px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-[#C5A059] hover:text-white transition-all transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
-            View Details — ០៣
+          <button (click)="goToProduct(prod.id)"
+                  class="bg-white/95 backdrop-blur-md text-black px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-[#C5A059] hover:text-white transition-all transform shadow-xl">
+            View Details — ០{{i + 1}}
           </button>
         </div>
       </div>
@@ -36,34 +22,34 @@
 
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30">
       <div
-        *ngFor="let i of [0, 1, 2]"
+        *ngFor="let prod of products; let i = index"
         (click)="scrollToSlide(i)"
         class="h-1.5 rounded-full transition-all duration-500 cursor-pointer"
         [ngClass]="{
-          'bg-white w-8': currentSlide === i,
-          'bg-white/30 w-1.5': currentSlide !== i
+          'bg-white w-10': currentSlide === i,
+          'bg-white/40 w-2': currentSlide !== i
         }"
       ></div>
     </div>
   </div>
 
-  <div class="w-full lg:w-2/5 flex flex-col justify-center px-8 lg:px-16 py-12 lg:py-0 bg-white">
+  <div class="w-full lg:w-2/5 flex flex-col justify-center px-8 lg:px-20 py-12 lg:py-0 bg-white">
     <div class="reveal-content">
-      <div class="flex items-center gap-4 mb-8">
-        <span class="w-10 h-[1.5px] bg-[#C5A059]"></span>
-        <p class="text-[10px] text-[#C5A059] uppercase tracking-[0.5em] font-bold">New Arrival ២០២៦</p>
+      <div class="flex items-center gap-4 mb-10">
+        <span class="w-12 h-[1px] bg-[#C5A059]"></span>
+        <p class="text-[10px] text-[#C5A059] uppercase tracking-[0.6em] font-bold">New Arrival ២០២៦</p>
       </div>
 
-      <h2 class="text-black mb-10">
-        <span class="block font-khmer-bold text-5xl lg:text-7xl mb-1">បណ្តុះមន្តស្នេហ៍</span>
-        <span class="block font-khmer-bold text-4xl lg:text-5xl opacity-40 italic">ក្នុងខ្លួនអ្នក</span>
+      <h2 class="text-black mb-12">
+        <span class="block font-khmer-bold text-6xl lg:text-8xl mb-2 tracking-tighter">បណ្តុះមន្តស្នេហ៍</span>
+        <span class="block font-khmer-bold text-4xl lg:text-5xl opacity-30 italic tracking-tight">ក្នុងខ្លួនអ្នក</span>
       </h2>
 
-      <div class="flex gap-4">
-        <button class="bg-black text-white px-10 py-4 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-[#C5A059] transition-all">
+      <div class="flex gap-6">
+        <button class="bg-black text-white px-12 py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-[#C5A059] transition-all shadow-lg active:scale-95">
           ទិញទំនិញ
         </button>
-        <button class="border border-gray-200 text-black px-10 py-4 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-gray-50 transition-all">
+        <button class="border-b border-gray-200 text-black py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:border-black transition-all">
           Lookbook
         </button>
       </div>
