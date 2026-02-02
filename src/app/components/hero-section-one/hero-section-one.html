@@ -11,23 +11,23 @@
 
         <img [src]="prod.img" class="w-full h-full object-cover">
 
-        <div class="absolute inset-0 bg-black/10 lg:bg-black/20 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+        <div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-start p-10 lg:p-16">
           <button (click)="goToProduct(prod.id)"
-                  class="bg-white/95 backdrop-blur-md text-black px-8 py-4 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-[#C5A059] hover:text-white transition-all transform shadow-xl">
+                  class="bg-white/95 backdrop-blur-md text-black px-6 py-3 lg:px-8 lg:py-4 text-[9px] lg:text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-[#C5A059] hover:text-white transition-all transform shadow-2xl mb-4">
             View Details — ០{{i + 1}}
           </button>
         </div>
       </div>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30">
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-30 pointer-events-none">
       <div
         *ngFor="let prod of products; let i = index"
         (click)="scrollToSlide(i)"
-        class="h-1.5 rounded-full transition-all duration-500 cursor-pointer"
+        class="h-1.5 rounded-full transition-all duration-500 cursor-pointer pointer-events-auto"
         [ngClass]="{
-          'bg-white w-10': currentSlide === i,
-          'bg-white/40 w-2': currentSlide !== i
+          'bg-white w-10 shadow-sm': currentSlide === i,
+          'bg-white/30 w-2': currentSlide !== i
         }"
       ></div>
     </div>
@@ -45,14 +45,18 @@
         <span class="block font-khmer-bold text-4xl lg:text-5xl opacity-30 italic tracking-tight">ក្នុងខ្លួនអ្នក</span>
       </h2>
 
-      <div class="flex gap-6">
-        <button class="bg-black text-white px-12 py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-[#C5A059] transition-all shadow-lg active:scale-95">
-          ទិញទំនិញ
-        </button>
-        <button class="border-b border-gray-200 text-black py-5 text-[11px] uppercase tracking-[0.4em] font-bold hover:border-black transition-all">
-          Lookbook
-        </button>
-      </div>
+      <p class="text-gray-500 text-sm leading-relaxed mb-12 max-w-md font-light">
+        ស្វែងយល់ពីការប្រមូលថ្មីបំផុតរបស់យើង ដែលរួមបញ្ចូលគ្នានូវភាពទាន់សម័យ និងផាសុកភាពសម្រាប់គេហដ្ឋានរបស់អ្នក។
+      </p>
+
+      <button routerLink="/shop" class="group flex items-center gap-6">
+        <span class="text-[10px] uppercase tracking-[0.4em] font-bold">ស្វែងរកឥឡូវនេះ</span>
+        <div class="w-12 h-12 rounded-full border border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </div>
+      </button>
     </div>
   </div>
 </section>
