@@ -16,9 +16,9 @@ export class HeroSectionOne implements OnInit, OnDestroy {
   private autoScrollInterval: any;
 
   products = [
-    { id: 201, img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200' },
-    { id: 202, img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200' },
-    { id: 203, img: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200' }
+    { id: 201, img: 'https://res.cloudinary.com/djb4x37fa/image/upload/v1770040781/IMG_9559_vzrizv.jpg' },
+    { id: 202, img: 'https://res.cloudinary.com/djb4x37fa/image/upload/v1770040780/IMG_9561_hxvfb2.jpg' },
+    { id: 203, img: 'https://res.cloudinary.com/djb4x37fa/image/upload/v1770040779/IMG_9560_ivwq0q.jpg' }
   ];
 
   constructor(private router: Router) {}
